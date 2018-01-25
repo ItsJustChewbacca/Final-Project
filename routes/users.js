@@ -3,16 +3,12 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (knex) => {
+router.get('/login', (req, res) => {
+  res.send('login');
+});
 
-  router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-    });
-  });
+router.get('/register', (req, res) => {
+  res.send('register');
+});
 
-  return router;
-}
+module.exports = router;
