@@ -13,7 +13,6 @@ const session = require('express-session');
 
 const User = require('../models/users');
 
-
 router.get('/login', (req, res) => {
   res.render("login");
 });
@@ -108,11 +107,8 @@ passport.deserializeUser(function(id, done) {
 });
 
 router.post('/login',
-  passport.authenticate('local', {successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: true}),
-  function(req, res) {
-
-    res.redirect('/dashboard');
-  }
+  passport.authenticate('local',
+   { successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: true })
 );
 
 
