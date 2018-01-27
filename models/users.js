@@ -23,5 +23,33 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
 }
 
 module.exports.getUserById = function(id, callback) {
-  knex('users').where('id', id)
+  knex('users')
+    .where({id})
+    .first('*') // Stops the query, and makes clear to other programmers (including Brandon from July 2018 who is explaining his code to someone)
+    // .then((user) => {
+    //   if(user == null){
+    //     callback(null, user);
+    //   } else {
+    //     callback(new Error('User Not Found'));
+    //   }
+    // }, (err) => {
+    //   callback(err);
+    // })
+    .asCallback((err, user) => {
+    if(err) return callback(err);
+    if(user != null) {
+      callback(null, user);
+    } else {
+      callback(new Error("User not found!"))
+    }
+
+    })
+  // knex('users').where('id', id).asCallback(function(err, users) {
+  //   if(err) return callback(err);
+  //   if(users.length) {
+  //     callback(null, users[0]);
+  //   } else {
+  //     callback(new Error("User not found!"))
+  //   }
+  // });
 }
