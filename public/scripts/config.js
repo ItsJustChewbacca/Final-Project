@@ -1,6 +1,36 @@
 $(function() {
   function begToDiffer(gameFrom, gameTo) {
-    console.log(gameFrom, gameTo);
+    const reverseMap = Object.keys(gameFrom).reduce((map, key) => {
+      return Object.assign({}, map, {[gameFrom[key]]: key});
+    }, {});
+    const diff = Object.keys(gameTo).reduce((map, key) => {
+      const to = gameTo[key];
+      const from = reverseMap[to];
+      // console.log("MAP", map);
+      if(from && from !== key){
+        return [...map, [from, key]];
+      }
+      return map;
+    }, []);
+    console.log('diff', diff);
+    for (var binding of diff) {
+      var [from_side, to_side] = binding;
+      console.log(` ${from_side} ~> map to ~> ${to_side}`);
+    }
+    return diff;
+  }
+
+  function leftOutOfTheShuffle(diff){
+    const leftOutA = diff
+      .map(([a]) => a)
+      .filter(a => !diff.some(([x, b]) => a == b));
+
+    const leftOutB = diff
+      .map(([a, b]) => b)
+      .filter(b => !diff.some(([a]) => a == b));
+      console.log( `${leftOutB} ~> map to ~> ${leftOutA}`);
+    return [leftOutA, leftOutB];
+
   }
 
   $('[data-type="mapping-selection"] [data-type="control"]').on('click', function () {
@@ -32,7 +62,7 @@ $(function() {
     if (!gameFrom || !gameTo) {
       return;
     }
-    begToDiffer(gameFrom, gameTo);
+    leftOutOfTheShuffle(begToDiffer(gameFrom, gameTo));
   }
 
 });
