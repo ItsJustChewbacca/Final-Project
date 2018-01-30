@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/styles/forum.css">
+    <link rel="stylesheet" type="text/css" href="/styles/comments.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -15,36 +15,37 @@
   </head>
   <body>
 
+    <h2>Comments</h2>
 
-    <h1>Forum</h1>
-
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Topics</li>
-      </ol>
-    </nav>
-
-    <button id="add_topic" type="button" class="btn btn-secondary">Add New Topic</button>
-    <div id="show_form" class="alert alert-info" role="alert">
-      <form method="POST" action="/forum/" id="addtopic">
-        <div class="form-group" enctype="application/x-www-form-urlencoded">
-          <label for="formGroupExampleInput">Enter Topic Name:</label>
-          <textarea name='text' type="text" class="form-control" id="formGroupExampleInput" placeholder="Topic Name"></textarea>
-          <button type="submit" class="btn btn-primary">Create Topic</button>
-        </div>
-      </form>
+    <div class="card text-center">
+      <div class="card-header">
+        <%= usernameTopic %> <br/>
+        <h2><%= topicTitle %> <br/></h2>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= topicDescription %></p>
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago
+      </div>
     </div>
 
-    <section id="new-topics">
-      <% for(var topic in topics) { %>
+    <% for(var comment of comments) { %>
       <div class="card">
         <div class="card-header">
-          <a href="/forum/topics/<%= topics[topic]['id'] %>"><%= topics[topic]['title']%></a><br/>
-          <%= topics[topic].username %>
+          <%= comment.description %> <br/>
+          <%= comment.cUsername%> <br/>
         </div>
       </div>
-      <% } %>
-    </section>
+    <% } %>
+
+    <br/>
+
+    <form method="POST" action=<%="/forum/topics/" + topicId %> id="addcomments">
+      <textarea name="comment_text" id="comment_area" placeholder="Write your comment here"></textarea>
+      <input type="submit" value="Comment">
+    </form>
+
 
 
     <!-- Optional JavaScript -->
