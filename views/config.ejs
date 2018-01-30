@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/config.css" type="text/css" />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/config.js"></script>
+
+    <title>Configuration page</title>
+  </head>
+  <body>
+  <div class="container">
+    <div class="row">
+      <div class= "col-xs-6">
+        <div class="dropdown" data-type="mapping-selection" data-direction="game-from">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-type="selected-mapping">
+            ---
+          </button>
+          <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+            <% for (const game of games) { %>
+              <li class='dropdown-divider'></li>
+              <li class='dropdown-submenu' data-type="game" data-id="<%= game.id %>" data-title="<%= game.title %>">
+                <a class="dropdown-item">
+                  <%= game.title %>
+                </a>
+                <ul class="dropdown-menu">
+                  <% for (const control of game.controls){  %>
+                    <li class="dropdown-item" data-type="control" data-id="<%= control.id %>" data-title="<%= control.title %>" data-mapping="<%= JSON.stringify(control.mappings) %>">
+                      <%= control.title %>
+                    </li>
+                  <%}%>
+                </ul>
+              </li>
+            <%}%>
+          </ul>
+        </div>
+      </div>
+      <div class= "col-xs-6">
+        <div class="dropdown" data-type="mapping-selection" data-direction="game-to">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-type="selected-mapping">
+            ---
+          </button>
+          <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+            <% for (const game of games) { %>
+              <li class='dropdown-divider'></li>
+              <li class='dropdown-submenu' data-type="game" data-id="<%= game.id %>" data-title="<%= game.title %>">
+                <a class="dropdown-item">
+                  <%= game.title %>
+                </a>
+                <ul class="dropdown-menu">
+                  <% for (const control of game.controls){  %>
+                    <li class="dropdown-item" data-type="control" data-id="<%= control.id %>" data-title="<%= control.title %>" data-mapping="<%= JSON.stringify(control.mappings) %>">
+                      <%= control.title %>
+                    </li>
+                  <%}%>
+                </ul>
+              </li>
+            <%}%>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
