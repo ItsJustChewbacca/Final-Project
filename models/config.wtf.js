@@ -2,5 +2,5 @@ const {getGamesWithControls} = require('./config');
 
 getGamesWithControls()
   .then(out => {
-    console.log('out', out);
+    console.log('out', JSON.stringify(out));
   });
