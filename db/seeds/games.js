@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
           knex('controls').insert({id:5, title: 'halo 4', mappings: data.halo5_halo4, games_id: 1 }),
           knex('controls').insert({id:6, title: 'boxer', mappings: data.halo5_boxer, games_id: 1 }),
           knex('controls').insert({id:7, title: 'southpaw', mappings: data.halo5_southpaw, games_id: 1 }),
-          knex('controls').insert({id:8, title: 'bumper jumper', mappings: data.halo5_bumper_jumper, games_id: 1 }),
+          knex('controls').insert({id:8, title: 'bumper jumper', mappings: data.halo5_bumperjumper, games_id: 1 }),
           knex('controls').insert({id:9, title: 'default', mappings: data.callofduty_default, games_id: 2}),
           knex('controls').insert({id:10, title: 'tatical', mappings: data.callofduty_tatical, games_id: 2}),
           knex('controls').insert({id:11, title: 'lefty', mappings: data.callofduty_lefty, games_id: 2}),

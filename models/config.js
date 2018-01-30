@@ -18,7 +18,7 @@ function groupBy(keyGetter, coll){
 module.exports.getGamesWithControls = function () {
    return Promise.all([
     knex('games').select('id', 'title'),
-    knex('controls').select('id', 'title', 'games_id')
+    knex('controls').select('id', 'title', 'games_id', 'mappings')
   ]).then(([games, controls]) => {
     const gamesIndex = {};
     games.forEach((game) => {
