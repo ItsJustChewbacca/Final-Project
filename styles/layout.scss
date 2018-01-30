@@ -1,0 +1,143 @@
+<<<<<<< HEAD
+=======
+
+body {
+  margin-top: 50px;
+  font-size: 16px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: Poppins;
+}
+
+p {
+  font-family: Roboto;
+  font-size: 16px;
+}
+
+.test {
+  background-color: red;
+}
+
+.navbar-elite {
+  background: rgba(0,0,0,0.8);
+  border: 0;
+  font-family: Poppins;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  color: #29a52d !important;
+  font-weight: bold;
+}
+
+#showcase-image {
+  background: url(../img/elite.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+#showcase-image h1 {
+  font-size: 50px;
+}
+
+#showcase p {
+  font-size: 20px;
+}
+
+#showcase, .button {
+  font-size: 18px;
+  text-decoration: none;
+  border: #926239;
+  color: #926239;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+#showcase h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+#showcase img {
+  width: 90%;
+   /*remember to try and change margin top from body*/
+}
+
+#showcase .showcase-left {
+  margin-top: 90px; /*remember to try and change margin top from body*/
+}
+
+#showcase .showcase-right {
+  margin-top: 90px; /*remember to try and change margin top from body*/
+}
+
+#testimonial {
+  background: #f1f1f1;
+  padding: 50px 0 30px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#testimonial p {
+  font-size: 32px;
+  font-family: 'Josefin Sans';
+  color: #000;
+}
+
+#testimonial p.customer {
+  font-size: 20px;
+  color: #666;
+}
+
+#about {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#about .info-right {
+  margin-top: 90px;
+  margin-left: 30px;
+}
+
+#info2 {
+  margin: 60px 0 60px 0;
+}
+
+#contact {
+  background: url(../img/image3.png);
+  padding: 40px;
+  color: #fff;
+  border-top: #333 7px solid;
+  border-bottom: #333 7px solid;
+}
+
+footer {
+  padding: 30px;
+}
+
+#benefits {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+section {
+  padding: 70px;
+}
+
+.nav>li>a {
+  color: #29a52d;
+}
+
+.nav>li>a.active {
+  background-color: #eee;
+  text-decoration: none;
+}
+>>>>>>> master
