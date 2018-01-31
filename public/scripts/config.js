@@ -13,7 +13,6 @@ $(document).ready(function() {
     const diff = Object.keys(gameTo).reduce((map, key) => {
       const to = gameTo[key];
       const from = reverseMap[to];
-      // console.log("MAP", map);
       if(from && from !== key){
         return [...map, [from, key]];
       }

@@ -1,13 +1,16 @@
 body {
   margin-top: 50px;
   font-size: 16px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: Poppins;
   font-size: 50px;
   color: #29a52d;
 }
+
 
 p {
   font-family: Roboto;
@@ -15,21 +18,6 @@ p {
   color: #333;
 }
 
-.test {
-  background-color: red;
-}
-
-.navbar-elite {
-  background: rgba(0,0,0,0.8);
-  border: 0;
-  font-family: Poppins;
-}
-
-.navbar-brand {
-  font-size: 20px;
-  color: #29a52d !important;
-  font-weight: bold;
-}
 
 #showcase-image {
   background: url(../img/elite.jpg);
