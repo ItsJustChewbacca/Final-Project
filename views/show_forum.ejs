@@ -7,6 +7,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/styles/forum.css">
+    <script src="https://use.fontawesome.com/3148242878.js"></script>
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -24,12 +26,19 @@
       </ol>
     </nav>
 
-    <button id="add_topic" type="button" class="btn btn-secondary">Add New Topic</button>
+    <% if(user) { %>
+      <button id="add_topic" type="button" class="btn btn-secondary">Add New Topic</button>
+    <% }  else { %>
+      <a type="button" class="btn btn-secondary" href="/login">Log in to Create Topic</a>
+    <% } %>
+
     <div id="show_form" class="alert alert-info" role="alert">
       <form method="POST" action="/forum/" id="addtopic">
         <div class="form-group" enctype="application/x-www-form-urlencoded">
           <label for="formGroupExampleInput">Enter Topic Name:</label>
           <textarea name='text' type="text" class="form-control" id="formGroupExampleInput" placeholder="Topic Name"></textarea>
+          <br/>
+          <textarea name='description' type="text" class="form-control" id="formGroupExampleInput" placeholder="Description"></textarea>
           <button type="submit" class="btn btn-primary">Create Topic</button>
         </div>
       </form>
@@ -41,6 +50,15 @@
         <div class="card-header">
           <a href="/forum/topics/<%= topics[topic]['id'] %>"><%= topics[topic]['title']%></a><br/>
           <%= topics[topic].username %>
+          <div class="like" data-id="<%= topics[topic].id %>" data-rated="0">
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+            <% if(topics[topic]['rating'] === null) { %>
+              <% topics[topic]['rating'] = 0 %>
+            <% } %>
+            <span class="likecounter"><%= topics[topic]['rating'] %></span>
+            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+          </div>
+
         </div>
       </div>
       <% } %>
@@ -57,5 +75,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/scripts/topic_form_toggle.js"></script>
+    <script type="text/javascript" src="/scripts/likes.js"></script>
   </body>
 </html>

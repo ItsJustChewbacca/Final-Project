@@ -7,6 +7,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/styles/comments.css">
+    <script src="https://use.fontawesome.com/3148242878.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -26,9 +27,10 @@
         <p class="card-text"><%= topicDescription %></p>
       </div>
       <div class="card-footer text-muted">
-        2 days ago
+       <%= topictime %>
       </div>
     </div>
+    <br/>
 
     <% for(var comment of comments) { %>
       <div class="card">
@@ -36,15 +38,31 @@
           <%= comment.description %> <br/>
           <%= comment.cUsername%> <br/>
         </div>
+        <div class="card-footer like" data-id="<%= comment.commentid %>" data-tid="<%= comment.topicid %>" data-rated="0" >
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+          <% if(comment.rating === null) { %>
+            <% comment.rating = 0 %>
+          <% } %>
+          <span class="likecounter"><%= comment.rating %></span>
+          <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+        </div>
       </div>
     <% } %>
 
     <br/>
 
-    <form method="POST" action=<%="/forum/topics/" + topicId %> id="addcomments">
-      <textarea name="comment_text" id="comment_area" placeholder="Write your comment here"></textarea>
-      <input type="submit" value="Comment">
-    </form>
+    <% if(user) { %>
+      <form method="POST" action=<%="/forum/topics/" + topicId %> id="addcomments"  enctype="application/x-www-form-urlencoded">
+        <div class="form-group">
+          <label for="formGroupExampleInput"></label>
+          <textarea name='comment_text' type="text" class="form-control" id="formGroupExampleInput" placeholder="Write your comment here"></textarea>
+          <button type="submit" class="btn btn-primary">Comment</button>
+        </div>
+      </form>
+    <% } else { %>
+      <a type="button" class="btn btn-secondary" href="/login">Log in to Comment</a>
+    <% } %>
+
 
 
 
@@ -57,6 +75,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="/scripts/topic_form_toggle.js"></script>
+    <script type="text/javascript" src="/scripts/likes_comments.js"></script>
+
+
+
+
   </body>
 </html>
