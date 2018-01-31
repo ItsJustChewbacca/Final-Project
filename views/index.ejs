@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <%include navbar_partial%>
+    <%include partials/navbar_partial%>
     <header id="showcase-image">
 
       <a href="/configuration" class="button">Get Started</a>
@@ -269,27 +269,27 @@
         $(window).scroll(function() {
           let scrollLength = $(this).scrollTop();
           if(scrollLength >= $('#showcase').offset().top - 50 && scrollLength <= $('#about').offset().top - 50) {
-            $('#navbar').find('li>a').removeClass('active')
-            $('#navbar').find('li:nth-of-type(1)>a').addClass('active')
+            $('.navbar').find('li>a').removeClass('active')
+            $('.navbar').find('li:nth-of-type(2)>a').addClass('active')
           }
           else if(scrollLength >= $('#about').offset().top - 50 && scrollLength <= $('#how-it-works').offset().top - 50) {
-            $('#navbar').find('li>a').removeClass('active')
-            $('#navbar').find('li:nth-of-type(2)>a').addClass('active')
+            $('.navbar').find('li>a').removeClass('active')
+            $('.navbar').find('li:nth-of-type(3)>a').addClass('active')
           }
           else if(scrollLength >= $('#how-it-works').offset().top - 50 && scrollLength <= $('#benefits').offset().top - 50) {
-            $('#navbar').find('li>a').removeClass('active')
-            $('#navbar').find('li:nth-of-type(3)>a').addClass('active')
+            $('.navbar').find('li>a').removeClass('active')
+            $('.navbar').find('li:nth-of-type(4)>a').addClass('active')
           }
           else if(scrollLength >= $('#benefits').offset().top - 50 && scrollLength <= $('#contact').offset().top - 200) {
-            $('#navbar').find('li>a').removeClass('active')
-            $('#navbar').find('li:nth-of-type(4)>a').addClass('active')
+            $('.navbar').find('li>a').removeClass('active')
+            $('.navbar').find('li:nth-of-type(5)>a').addClass('active')
           }
           else if(scrollLength >= $('#contact').offset().top - 200) {
-            $('#navbar').find('li>a').removeClass('active')
-            $('#navbar').find('li:nth-of-type(5)>a').addClass('active')
+            $('.navbar').find('li>a').removeClass('active')
+            $('.navbar').find('li:nth-of-type(6)>a').addClass('active')
           }
           else {
-            $('#navbar').find('li>a').removeClass('active')
+            $('.navbar').find('li>a').removeClass('active')
           }
         })
       });
