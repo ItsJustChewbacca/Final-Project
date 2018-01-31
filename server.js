@@ -91,7 +91,6 @@ app.use("/forum", forumRoutes);
 app.use("/", homeRoutes);
 app.use("/configuration", configRoutes);
 
-
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
