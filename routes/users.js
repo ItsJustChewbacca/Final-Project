@@ -121,7 +121,11 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-  res.send("Dashboard")
+  res.render("profile")
+});
+
+router.get('/profile', (req, res) => {
+  res.render("profile");
 });
 
 module.exports = router;
