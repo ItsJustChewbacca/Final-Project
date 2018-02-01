@@ -8,6 +8,8 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/styles/forum.css">
     <script src="https://use.fontawesome.com/3148242878.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 
 
     <!-- Bootstrap CSS -->
@@ -50,13 +52,18 @@
         <div class="card-header">
           <a href="/forum/topics/<%= topics[topic]['id'] %>"><%= topics[topic]['title']%></a><br/>
           <%= topics[topic].username %>
+
+          <form method="post" action="/forum/topics/<%=topics[topic]['id']%>?_method=DELETE" id="delete-comment">
+            <button type="submit"><i class="fas fa-trash-alt"></i></button>
+          </form>
+
           <div class="like" data-id="<%= topics[topic].id %>" data-rated="0">
-            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+            <i class="far fa-thumbs-up"></i>
             <% if(topics[topic]['rating'] === null) { %>
               <% topics[topic]['rating'] = 0 %>
             <% } %>
             <span class="likecounter"><%= topics[topic]['rating'] %></span>
-            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+            <i class="far fa-thumbs-down"></i>
           </div>
 
         </div>
