@@ -1,11 +1,11 @@
 $(function() {
 
-  $( "body" ).on('click', '.fa-thumbs-o-up', function() {
+  $( "body" ).on('click', '.fa-thumbs-up', function() {
 
     if (!$(this).hasClass('up')) {
       $(this).addClass('up');
 
-      $('.fa-thumbs-o-down').removeClass('down');
+      $('.fa-thumbs-down').removeClass('down');
 
       var likeCounter = $(this).siblings('.likecounter');
       var count = +likeCounter.text();
@@ -34,12 +34,12 @@ $(function() {
 
   });
 
-  $( "body" ).on('click', '.fa-thumbs-o-down', function() {
+  $( "body" ).on('click', '.fa-thumbs-down', function() {
       if (!$(this).hasClass('down')) {
 
         $(this).addClass('down');
 
-        $('.fa-thumbs-o-up').removeClass('up');
+        $('.fa-thumbs-up').removeClass('up');
 
 
         var likeCounter = $(this).siblings('.likecounter');

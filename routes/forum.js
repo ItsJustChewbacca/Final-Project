@@ -11,18 +11,18 @@ router.use(knexLogger(knex));
 
 
 router.get('/', (req, res) => {
+
   knex('topics')
     .leftJoin('users', 'users.id', '=', 'topics.users_id')
     .select('topics.id', 'topics.title', 'topics.created_at', 'users.username', 'topics.rating', 'topics.description')
     .then(topics => {
-      console.log('topics');
       res.render("show_forum.ejs", {topics});
   });
 });
 
 router.post('/', (req, res) => {
+
   if (!req.body.text) {
-    console.log('ReqBody', req.body)
     res.status(400).send({ error: 'invalid request: no data in POST body'});
     return;
   }
@@ -33,16 +33,16 @@ router.post('/', (req, res) => {
 });
 
 router.get('/topics/:id', (req, res) => {
+
   let topicId = Number(req.params.id);
 
   knex('topics as t')
-    .rightJoin('comments as c', 'c.topics_id', '=', 't.id')
+    .leftJoin('comments as c', 'c.topics_id', '=', 't.id')
     .join('users as usertopic', 'usertopic.id', '=', 't.users_id')
-    .leftJoin('users as usercomments', 'usercomments.id', '=', 'c.users_id')
+    .fullOuterJoin('users as usercomments', 'usercomments.id', '=', 'c.users_id')
     .select('c.description', 'c.topics_id', 't.id as topicid', 't.title', 'c.created_at', 'usertopic.username', 't.description as topicdes', 'usercomments.username as cUsername', 'c.rating', 't.created_at', 'c.id as commentid')
     .where('t.id', '=', topicId)
     .then(comments => {
-      console.log(comments);
       const firstComment = comments[0];
       let topicTitle = firstComment && firstComment.title;
       let usernameTopic = firstComment && firstComment.username;
@@ -59,7 +59,6 @@ router.post('/topics/:id', (req, res) => {
   let topicId = req.params.id;
 
   if (!req.body.comment_text) {
-    console.log('ReqBody', req.body)
     res.status(400).send({ error: 'invalid request: no data in POST body'});
     return;
   }
@@ -78,24 +77,50 @@ router.post('/topics/:id/likes', (req, res) => {
     .then(function() {
       res.redirect('/forum/topics/'+ topicId);
   });
-
 });
 
 router.post('/topics/:id/comments/:commentid/likes', (req, res) => {
+
   let topicId = req.params.id;
   let commentId = req.params.commentid;
   let likenum = req.body.likes;
 
-
   knex('comments')
     .update({rating: likenum})
-    .where('comments.topics_id', '=', topicId)
     .where('comments.id', '=', commentId)
     .then(function() {
       res.redirect('/forum/topics/'+ topicId);
   });
 
 
+});
+
+router.delete('/topics/:id', (req, res) => {
+
+  let topicId = req.params.id;
+
+  knex('topics')
+    .where('topics.id', topicId)
+    .del()
+    .then(() => {
+      res.redirect('/forum');
+      return;
+  });
+
+});
+
+router.delete('/topics/:id/comments/:commentid', (req, res) => {
+
+  let topicId = req.params.id;
+  let commentId = req.params.commentid;
+
+  knex('comments')
+    .where('comments.id', commentId)
+    .del()
+    .then(() => {
+      res.redirect('/forum/topics/'+ topicId);
+      return;
+  });
 });
 
 

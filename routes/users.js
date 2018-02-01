@@ -43,34 +43,37 @@ router.post('/register', function(req, res) {
   if (errors) {
     res.render('register', {
       error: error
-    })
-  } else {
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(req.body.password, salt, function(err, hash) {
-        if (err) {
-          console.log("bcrypt err:", err);
-          req.flash('errors', 'There was a problem creating your account. Please try again.');
-          res.redirect("/");
-          return;
-        }
-        knex('users').insert({
-          first_name: first_name,
-          last_name: last_name,
-          username: username,
-          email: email,
-          password: hash,
-          confirm_password: hash
-        }).returning('id')
-        .then((id) => {
-          console.log(id);
+    });
+  }
+
+    else {
+      bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(req.body.password, salt, function(err, hash) {
+          if (err) {
+            console.log("bcrypt err:", err);
+            req.flash('errors', 'There was a problem creating your account. Please try again.');
+            res.redirect("/");
+            return;
+          }
+          knex('users').insert({
+            first_name: first_name,
+            last_name: last_name,
+            username: username,
+            email: email,
+            password: hash,
+            confirm_password: hash
+          }).returning('id')
+          .then((id) => {
+            console.log(id);
+          });
         });
       });
-    });
 
-    req.flash('success_msg', 'You are registered and can now login!');
+      req.flash('success_msg', 'You are registered and can now login!');
 
-    res.redirect('/login');
-  }
+      res.redirect('/login');
+    }
+
 });
 
 passport.use(new LocalStrategy(
