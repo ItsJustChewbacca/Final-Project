@@ -1,9 +1,12 @@
-body {
-  background-color: #000;
+.container {
+  position: absolute;
 }
-
+.results {
+  position: absolute;
+  width: 100%;
+}
 .dropdown-submenu {
-    position: relative;
+position: relative;
 }
 
 .dropdown-submenu>.dropdown-menu {
@@ -52,4 +55,24 @@ body {
 .btn-secondary {
     background-color: white;
     color: limegreen;
+}
+
+body {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+8,000425+99 */
+background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(top, #1e5799 8%, #000425 99%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #1e5799 8%,#000425 99%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #010702 8%,#000425 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#000425',GradientType=0 ); /* IE6-9 */
+    text-align: center;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 16px;
+    color: gray;
+    fill:gray !important;
+    height:100vh;
+}
+#particles{
+    height:100%;
+    margin:0 auto;
+    overflow:hidden;
 }

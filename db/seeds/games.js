@@ -4,7 +4,10 @@ exports.seed = function(knex, Promise) {
     return knex('games').del().then(function () {
       return Promise.all([
         knex('games').insert({id: 1, title: 'Halo 5'}),
-        knex('games').insert({id: 2, title: 'Call of Duty'})
+        knex('games').insert({id: 2, title: 'Call of Duty'}),
+        knex('games').insert({id: 3, title: 'Battlefield 4'}),
+        knex('games').insert({id: 4, title: 'Destiny 2'}),
+        knex('games').insert({id: 5, title: 'Battlefield 1'})
       ]).then(function () {
         return Promise.all([
           knex('controls').insert({id:1, title: 'Default', mappings: data.halo5_default, games_id: 1 }),
@@ -28,7 +31,16 @@ exports.seed = function(knex, Promise) {
           knex('controls').insert({id:19, title: 'Stick and Move', mappings: data.callofduty_stick_and_move, games_id: 2}),
           knex('controls').insert({id:20, title: 'Scout', mappings: data.callofduty_scout, games_id: 2}),
           knex('controls').insert({id:21, title: 'Brawler', mappings: data.callofduty_brawler, games_id: 2}),
-          knex('controls').insert({id:22, title: 'Beast', mappings: data.callofduty_beast, games_id: 2})
+          knex('controls').insert({id:22, title: 'Beast', mappings: data.callofduty_beast, games_id: 2}),
+          knex('controls').insert({id:23, title: 'Default', mappings: data.battlefield4_default, games_id: 3}),
+          knex('controls').insert({id:24, title: 'Veteran', mappings: data.battlefield4_veteran, games_id: 3}),
+          knex('controls').insert({id:25, title: 'Lefty', mappings: data.battlefield4_lefty, games_id: 3}),
+          knex('controls').insert({id:26, title: 'Lefty-veteran', mappings: data.battlefield4_lefty_veteran, games_id: 3}),
+          knex('controls').insert({id:27, title: 'Jumper', mappings: data.destiny2_Jumper, games_id: 4}),
+          knex('controls').insert({id:28, title: 'Default', mappings: data.battlefield1_default, games_id: 5}),
+          knex('controls').insert({id:29, title: 'Alternate', mappings: data.battlefield1_alternate, games_id: 5}),
+          knex('controls').insert({id:30, title: 'Lefty', mappings: data.battlefield1_lefty, games_id: 5}),
+          knex('controls').insert({id:31, title: 'Lefty-alternate', mappings: data.battlefield1_lefty_alternate, games_id: 5})
         ]);
       });
     });
