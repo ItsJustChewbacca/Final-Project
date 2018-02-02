@@ -53,18 +53,21 @@
           <a href="/forum/topics/<%= topics[topic]['id'] %>"><%= topics[topic]['title']%></a><br/>
           <%= topics[topic].username %>
 
-          <form method="post" action="/forum/topics/<%=topics[topic]['id']%>?_method=DELETE" id="delete-comment">
-            <button type="submit"><i class="fas fa-trash-alt"></i></button>
-          </form>
+          <% if (user) { %>
+            <form method="post" action="/forum/topics/<%=topics[topic]['id']%>?_method=DELETE" id="delete-comment">
+              <button type="submit"><i class="fas fa-trash-alt"></i></button>
+            </form>
 
-          <div class="like" data-id="<%= topics[topic].id %>" data-rated="0">
-            <i class="far fa-thumbs-up"></i>
-            <% if(topics[topic]['rating'] === null) { %>
-              <% topics[topic]['rating'] = 0 %>
-            <% } %>
-            <span class="likecounter"><%= topics[topic]['rating'] %></span>
-            <i class="far fa-thumbs-down"></i>
-          </div>
+            <div class="like" data-id="<%= topics[topic].id %>" data-rated="0">
+              <i class="far fa-thumbs-up"></i>
+              <% if(topics[topic]['rating'] === null) { %>
+                <% topics[topic]['rating'] = 0 %>
+              <% } %>
+              <span class="likecounter"><%= topics[topic]['rating'] %></span>
+              <i class="far fa-thumbs-down"></i>
+            </div>
+          <% } %>
+
 
         </div>
       </div>
