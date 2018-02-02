@@ -10,6 +10,9 @@ const knex        = require("knex")(knexConfig[ENV]);
 const bcrypt = require("bcryptjs");
 const bodyParser  = require("body-parser");
 const session = require('express-session');
+const databaseError = require("database-error");
+const Promise = require("bluebird");
+
 
 const User = require('../models/users');
 
@@ -20,6 +23,17 @@ router.get('/login', (req, res) => {
 router.get('/register', (req, res) => {
   res.render("register");
 });
+let duplicateEmailAddress = {
+    name: "UniqueConstraintViolationError",
+    table: "users",
+    column: "email"
+}
+
+let duplicateUsername = {
+    name: "UniqueConstraintViolationError",
+    table: "users",
+    column: "username"
+}
 
 router.post('/register', function(req, res) {
   const first_name = req.body.first_name;
@@ -52,26 +66,30 @@ router.post('/register', function(req, res) {
           if (err) {
             console.log("bcrypt err:", err);
             req.flash('errors', 'There was a problem creating your account. Please try again.');
-            res.redirect("/");
+            res.redirect("/register");
             return;
           }
-          knex('users').insert({
+
+          Promise.try(() => {
+              return knex("users").insert({
             first_name: first_name,
             last_name: last_name,
-            username: username,
-            email: email,
+            username: username.toLowerCase(),
+            email: email.toLowerCase(),
             password: hash,
             confirm_password: hash
-          }).returning('id')
-          .then((id) => {
-            console.log(id);
+              }).returning("id");
+          }).then((id) => {
+              res.redirect('/login');
+          }).catch(databaseError.rethrow).catch(duplicateEmailAddress, (err) => {
+              res.status(422).send("That e-mail address already exists! Please pick a different one.");
+          }).catch(duplicateUsername, (err) => {
+              res.status(422).send("That username already exists! Please pick a different one.");
           });
         });
       });
 
-      req.flash('success_msg', 'You are registered and can now login!');
 
-      res.redirect('/login');
     }
 
 });
@@ -124,7 +142,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-  res.render("profile")
+  res.render("profile");
 });
 
 router.get('/profile', (req, res) => {
