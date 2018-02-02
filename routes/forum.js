@@ -9,6 +9,10 @@ const knex        = require("knex")(knexConfig[ENV]);
 var knexLogger = require('knex-logger');
 router.use(knexLogger(knex));
 
+const User = require('../models/users');
+
+
+
 
 router.get('/', (req, res) => {
 
@@ -22,12 +26,15 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 
+  let userId = req.session.passport.user;
+  console.log(userId);
+
   if (!req.body.text) {
     res.status(400).send({ error: 'invalid request: no data in POST body'});
     return;
   }
 
-  knex('topics').insert({title: req.body.text, description: req.body.description}).then(function() {
+  knex('topics').insert({title: req.body.text, description: req.body.description, users_id: userId}).then(function() {
     res.redirect('/forum');
   });
 });
@@ -57,13 +64,15 @@ router.get('/topics/:id', (req, res) => {
 
 router.post('/topics/:id', (req, res) => {
   let topicId = req.params.id;
+  let userId = req.session.passport.user;
+  console.log(userId);
 
   if (!req.body.comment_text) {
     res.status(400).send({ error: 'invalid request: no data in POST body'});
     return;
   }
 
-  knex('comments').insert({description: req.body.comment_text, topics_id: topicId}).then(function() {
+  knex('comments').insert({description: req.body.comment_text, topics_id: topicId, users_id: userId}).then(function() {
     res.redirect('/forum/topics/'+ topicId);
   });
 });
