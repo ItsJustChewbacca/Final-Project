@@ -65,7 +65,6 @@ router.get('/topics/:id', (req, res) => {
 router.post('/topics/:id', (req, res) => {
   let topicId = req.params.id;
   let userId = req.session.passport.user;
-  console.log(userId);
 
   if (!req.body.comment_text) {
     res.status(400).send({ error: 'invalid request: no data in POST body'});
@@ -107,13 +106,14 @@ router.post('/topics/:id/comments/:commentid/likes', (req, res) => {
 router.delete('/topics/:id', (req, res) => {
 
   let topicId = req.params.id;
+  let userId = req.session.passport.user;
 
   knex('topics')
     .where('topics.id', topicId)
+    .andWhere('topics.users_id', userId)
     .del()
     .then(() => {
-      res.redirect('/forum');
-      return;
+    return res.redirect('/forum');
   });
 
 });
@@ -122,9 +122,11 @@ router.delete('/topics/:id/comments/:commentid', (req, res) => {
 
   let topicId = req.params.id;
   let commentId = req.params.commentid;
+  let userId = req.session.passport.user;
 
   knex('comments')
     .where('comments.id', commentId)
+    .andWhere('comments.users_id', userId)
     .del()
     .then(() => {
       res.redirect('/forum/topics/'+ topicId);
