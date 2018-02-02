@@ -1,6 +1,26 @@
+body {
+  margin-top: 100px;
+}
+
+.coverHeader {
+  height: 18rem;
+  width: 100%;
+  background-color: lightgrey;
+}
+
+.grid {
+  padding: 100px 0;
+}
+
+.section-header {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
 .card {
   width: 90%;
   margin: auto;
+  margin-bottom: 30px;
 }
 
 .like {
@@ -18,6 +38,7 @@
 .btn-secondary {
   float: right;
   margin: 10px;
+  margin-right: 60px;
 }
 
 .alert-info {
