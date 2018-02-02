@@ -41,28 +41,29 @@
           <%= comment.cUsername%> <br/>
         </div>
 
-        <div class="card-footer like" data-id="<%= comment.commentid %>" data-tid="<%= comment.topicid %>" data-rated="0" >
-          <i class="far fa-thumbs-up"></i>
-          <% if(comment.rating === null) { %>
-            <% comment.rating = 0 %>
-          <% } %>
-          <span class="likecounter"><%= comment.rating %></span>
-          <i class="far fa-thumbs-down"></i>
+        <% if (user) { %>
+
+          <div class="card-footer like" data-id="<%= comment.commentid %>" data-tid="<%= comment.topicid %>" data-rated="0" >
+            <i class="far fa-thumbs-up"></i>
+            <% if(comment.rating === null) { %>
+              <% comment.rating = 0 %>
+            <% } %>
+            <span class="likecounter"><%= comment.rating %></span>
+            <i class="far fa-thumbs-down"></i>
 
 
 
-          <form method="post" action="/forum/topics/<%=comment.topicid%>/comments/<%=comment.commentid%>?_method=DELETE" id="delete-comment">
-            <button type="submit"><i class="fas fa-trash-alt"></i></button>
-          </form>
-
-
-        </div>
+            <form method="post" action="/forum/topics/<%=comment.topicid%>/comments/<%=comment.commentid%>?_method=DELETE" id="delete-comment">
+              <button type="submit"><i class="fas fa-trash-alt"></i></button>
+            </form>
+          </div>
+        <% } %>
       </div>
     <% } %>
 
     <br/>
 
-    <% if(user) { %>
+    <% if (user) { %>
       <form method="POST" action=<%="/forum/topics/" + topicId %> id="addcomments"  enctype="application/x-www-form-urlencoded">
         <div class="form-group">
           <label for="formGroupExampleInput"></label>
