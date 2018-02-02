@@ -19,20 +19,25 @@
   </head>
   <body>
 
+   <header>
+     <% include partials/navbar_partial %>
+   </header>
 
-    <h1>Forum</h1>
+   <div class="coverHeader">
+     <div class="grid">
+       <div class="gridText">
+         <h1 class="section-header">FORUMS</h1>
+       </div>
+     </div>
+   </div>
 
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Topics</li>
-      </ol>
-    </nav>
-
-    <% if(user) { %>
-      <button id="add_topic" type="button" class="btn btn-secondary">Add New Topic</button>
-    <% }  else { %>
-      <a type="button" class="btn btn-secondary" href="/login">Log in to Create Topic</a>
-    <% } %>
+    <div>
+      <% if(user) { %>
+        <button id="add_topic" type="button" class="btn btn-secondary">Add New Topic</button>
+      <% }  else { %>
+        <a type="button" class="btn btn-secondary" href="/login">Log in to Create Topic</a>
+      <% } %>
+    </div>
 
     <div id="show_form" class="alert alert-info" role="alert">
       <form method="POST" action="/forum/" id="addtopic">
@@ -51,7 +56,9 @@
       <div class="card">
         <div class="card-header">
           <a href="/forum/topics/<%= topics[topic]['id'] %>"><%= topics[topic]['title']%></a><br/>
-          <%= topics[topic].username %>
+          <section>
+            <%= topics[topic].username %>
+          </section>
 
           <% if (user) { %>
             <form method="post" action="/forum/topics/<%=topics[topic]['id']%>?_method=DELETE" id="delete-comment">
