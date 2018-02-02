@@ -2,6 +2,9 @@ const bcrypt = require("bcryptjs");
 const ENV         = process.env.ENV || "development";
 const knexConfig  = require("../knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
+const express = require('express');
+const session = require('express-session');
+
 
 
 module.exports.getUserByUsername = function(username, callback) {
@@ -53,3 +56,12 @@ module.exports.getUserById = function(id, callback) {
   //   }
   // });
 }
+
+
+module.exports.updateUser = function(userData) {
+  console.log(userData);
+  return knex('users')
+    .where({id: userData.id})
+    .update(userData);
+};
+
