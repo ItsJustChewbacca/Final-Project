@@ -108,13 +108,8 @@ router.delete('/topics/:id', (req, res) => {
 
   let topicId = req.params.id;
 
-  var subquery = knex.select('').from('comments');
-
-  console.log(subquery);
-
   knex('topics')
     .where('topics.id', topicId)
-    .wherein('', subquery)
     .del()
     .then(() => {
       res.redirect('/forum');
