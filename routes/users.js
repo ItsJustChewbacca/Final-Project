@@ -16,6 +16,7 @@ const Promise = require("bluebird");
 
 const User = require('../models/users');
 
+
 router.get('/login', (req, res) => {
   res.render("login");
 });
@@ -117,6 +118,14 @@ passport.use(new LocalStrategy(
   }
 ));
 
+const ensureAuthentication = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+}
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -141,12 +150,24 @@ router.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', ensureAuthentication, (req, res) => {
   res.render("profile");
 });
 
-router.get('/profile', (req, res) => {
-  res.render("profile");
+
+
+router.post('/profile', ensureAuthentication, (req, res) => {
+  const { first_name, last_name, email, username,  password, confirm_password } = req.body;
+  const id = req.session.passport.user;
+
+  User.updateUser({id, first_name, last_name, email, username, password, confirm_password}).then(out => {
+    console.log('out', out);
+    console.log("req.body", req.body);
+    res.redirect('/dashboard');
+  });
+
 });
+
+
 
 module.exports = router;
