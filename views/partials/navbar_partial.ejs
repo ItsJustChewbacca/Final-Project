@@ -26,6 +26,9 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/configuration">Configuration</a>
               <a class="dropdown-item" href="/forum">Forums</a>
+              <% if(user) { %>
+              <a class="dropdown-item" href="/dashboard">Dashboard</a>
+              <% } %>
             </div>
           </li>
           <li class="nav-item">
@@ -44,10 +47,18 @@
             <a class="nav-link" href="#contact">Contact Us</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="/login">Sign In</a></button>
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="/register">Sign Up</a></button>
+        <% if(user) { %>
+        <form method="GET" action="/logout">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="/logout">Logout</a></button>
         </form>
+        <% } else { %>
+        <form method="GET" action="/login">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button>
+        </form>
+        <form method="GET" action="/register">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Up</button>
+        </form>
+        <% } %>
       </div>
     </nav>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

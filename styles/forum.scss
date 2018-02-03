@@ -1,11 +1,13 @@
 body {
   margin-top: 100px;
+  background-color: red;
 }
 
 .coverHeader {
   height: 18rem;
   width: 100%;
-  background-color: lightgrey;
+  background: url(../img/space.jpg);
+  background-size: cover;
 }
 
 .grid {
@@ -13,6 +15,9 @@ body {
 }
 
 .section-header {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
   margin-top: 30px;
   margin-left: 20px;
 }
@@ -20,15 +25,23 @@ body {
 .card {
   width: 90%;
   margin: auto;
-  margin-bottom: 30px;
+}
+
+.card-header {
+  background-color: gainsboro;
 }
 
 .like {
-  float: right
+  float: right;
+  padding-right: 10px;
 }
 
 #show_form {
   margin-top: 80px;
+}
+
+form {
+  float: right;
 }
 
 #topic_heading {
@@ -37,8 +50,10 @@ body {
 
 .btn-secondary {
   float: right;
-  margin: 10px;
+  margin: 20px;
   margin-right: 60px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .alert-info {
@@ -53,4 +68,11 @@ body {
     background-color: grey;
   }
 }
+
+#new-topics {
+  background-color: currentColor;
+  padding: 100px 0;
+}
+
+
 
