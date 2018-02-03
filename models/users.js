@@ -58,10 +58,10 @@ module.exports.getUserById = function(id, callback) {
 }
 
 
-module.exports.updateUser = function(userData) {
+module.exports.updateUser = function(id, userData) {
   console.log(userData);
   return knex('users')
-    .where({id: userData.id})
+    .where({id: id})
     .update(userData);
 };
 
