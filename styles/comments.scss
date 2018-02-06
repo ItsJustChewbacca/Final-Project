@@ -1,3 +1,7 @@
+body {
+  background-color: currentColor;
+}
+
 .card {
   width: 90%;
   margin: auto;
@@ -25,5 +29,29 @@
 
 #delete-comment {
   float: right;
+}
+
+.coverHeader {
+  height: 18rem;
+  width: 100%;
+  background: url(../img/space.jpg);
+  background-size: cover;
+}
+
+.section-header {
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 5px;
+  padding-top: 130px;
+  margin-left: 20px;
+}
+
+.text-center {
+  margin-top: 100px;
+}
+
+.commentButton {
+  padding-left: 65px;
 }
 

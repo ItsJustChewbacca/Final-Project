@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/styles/comments.css">
     <script src="https://use.fontawesome.com/3148242878.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
@@ -14,11 +13,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="/styles/comments.css">
+
     <title>Forum</title>
   </head>
   <body>
 
-    <h2>Comments</h2>
+    <% include partials/navbar_partial %>
+
+    <div class="coverHeader">
+      <div class="grid">
+        <div class="gridText">
+          <h1 class="section-header">FORUMS</h1>
+        </div>
+      </div>
+    </div>
 
     <div class="card text-center">
       <div class="card-header">
@@ -71,7 +80,9 @@
         </div>
       </form>
     <% } else { %>
-      <a type="button" class="btn btn-secondary" href="/login">Log in to Comment</a>
+      <form class="commentButton" method="GET" action="/login">
+        <button class="btn btn-success">Log in to Post a Comment</button>
+      </form>
     <% } %>
 
 
