@@ -37,6 +37,24 @@
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
                     <h5 class="mb-3">User Profile</h5>
+                    <ul class="list-group">
+                      <label class="list-group-item col-lg-6">
+                        <strong>First name:</strong> <%= user.first_name%>
+                      </label>
+                      <label class="list-group-item col-lg-6">
+                        <strong>Last name:</strong>  <%=user.last_name%>
+                      </label>
+
+                      <label class="list-group-item col-lg-6">
+                        <strong>Email:</strong>  <%=user.email%>
+                      </label>
+                      <label class="list-group-item col-lg-6">
+                        <strong>Username: <%= user.username%></strong>
+                      </label>
+                      <label class="list-group-item col-lg-6">
+                        <strong>Bio:</strong> <%= user.bio%>
+                      </label>
+                    </ul>
                     <div class="row">
                         <div class="col-md-12">
                             <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
@@ -112,19 +130,25 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">First name</label>
                             <div class="col-lg-9">
-                                <input  name="first_name" class="form-control" type="text" value="">
+                                <input  name="first_name" class="form-control" type="text" placeholder=<%= user.first_name %> value="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                             <div class="col-lg-9">
-                                <input name="last_name" class="form-control" type="text" value="">
+                                <input name="last_name" class="form-control" type="text" placeholder=<%= user.last_name %>  value="">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                             <div class="col-lg-9">
-                                <input name="email" class="form-control" type="email" value="">
+                                <input name="email" class="form-control" type="email" placeholder=<%= user.email %>  value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">bio</label>
+                            <div class="col-lg-9">
+                                <input name="bio" class="form-control" type="text" placeholder=<%= user.bio %>  value="">
                             </div>
                         </div>
 
@@ -148,7 +172,7 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Username</label>
                             <div class="col-lg-9">
-                                <input name="username" class="form-control" type="text" value="">
+                                <input name="username" class="form-control" type="text" placeholder=<%= user.username %>  value="">
                             </div>
                         </div>
                         <div class="form-group row">
