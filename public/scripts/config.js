@@ -1,6 +1,6 @@
 function prettyString(diff) {
      var newArray = diff.map(([a, b]) => {
-      return ` ${a} ~> map to ~> ${b} `;
+      return ` ${a} ~ map to ~ ${b} `;
     });
      return newArray;
   }
@@ -21,7 +21,7 @@ $(document).ready(function() {
     console.log('diff', diff);
     for (var binding of diff) {
       var [from_side, to_side] = binding;
-      console.log(` ${from_side} ~> map to ~> ${to_side}`);
+      console.log(` ${from_side} ~ map to ~ ${to_side}`);
     }
     prettyString(diff);
     return diff;
@@ -63,15 +63,17 @@ $(document).ready(function() {
 
     $('.rebind-result').empty();
       diff.forEach(([a, b]) => {
-        $('.rebind-result').append(`<li class="list-group-item"> ${a} ~> map to ~> ${b}</li>`);
+        $('.rebind-result').append(`<li class="list-group-item"> ${a} ~ map to ~ ${b}</li>`);
       });
     var $potential = $('.potential-mappings').empty();
     leftOutB.forEach((a) => {
       leftOutA.forEach((b) => {
-        $potential.append(`<li class="list-group-item"> ${a} ~> map to ~> ${b}</li>`);
+        $potential.append(`<li class="list-group-item"> ${a} ~ map to ~ ${b}</li>`);
       });
     });
   });
+
+
 
   function easyPee() {
     var gameFrom = $('[data-direction="game-from"]').data('mapping');
@@ -79,7 +81,8 @@ $(document).ready(function() {
     if (!gameFrom || !gameTo) {
       return [[], [], []];
     }
-    var result = leftOutOfTheShuffle(begToDiffer(gameFrom, gameTo));
+  var result = leftOutOfTheShuffle(begToDiffer(gameFrom, gameTo));
+
     return result;
   }
 });
