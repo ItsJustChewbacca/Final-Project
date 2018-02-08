@@ -66,7 +66,6 @@ background: -webkit-linear-gradient(top, #1e5799 8%,#000425 99%); /* Chrome10-25
 background: linear-gradient(to bottom, #010702 8%,#000425 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#000425',GradientType=0 ); /* IE6-9 */
     text-align: center;
-    font-family: 'Shadows Into Light', cursive;
     font-size: 16px;
     color: gray;
     fill:gray !important;
@@ -77,3 +76,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     margin:0 auto;
     overflow:hidden;
 }
+
+.below-nav {
+  margin-top:55px;
+
+}
+
+.alert {
+  position: absolute;
+  width: 100%;
+}
+
+
+
