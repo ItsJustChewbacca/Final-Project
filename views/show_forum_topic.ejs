@@ -31,7 +31,7 @@
 
     <div class="card text-center">
       <div class="card-header">
-        <%= usernameTopic %> <br/>
+        <strong> <%= usernameTopic %> </strong> <br/>
         <h2><%= topicTitle %> <br/></h2>
       </div>
       <div class="card-body">
@@ -46,8 +46,8 @@
     <% for(var comment of comments) { %>
       <div class="card">
         <div class="card-header">
+           <strong><%= comment.cUsername%> </strong> <br/>
           <%= comment.description %> <br/>
-          <%= comment.cUsername%> <br/>
         </div>
 
         <% if (user) { %>

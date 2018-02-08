@@ -17,7 +17,7 @@
 
   <body>
     <%include partials/navbar_partial%>
-  <div class="container below-nav">
+  <div class="container below-nav games-list">
     <div class="row">
       <div class= "col-xs-6">
         <div class="dropdown" data-type="mapping-selection" data-direction="game-from">
@@ -73,12 +73,13 @@
     <h3> Instructions </h3>
     <ul class="list-group rebind-result">
     </ul>
+    <h3> Auto-binded </h3>
     <ul class="list-group potential-mappings">
     </ul>
   </div>
-  <div class="alert alert-primary below-nav" role="alert">
+  <div class="alert alert-primary below-nav alert-opacity" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
+  <span aria-hidden="true" class="close">&times;</span>
 </button>
   <h4 class="alert-heading">Get started creating specialized configurations for your favourite games!</h4>
   <hr>

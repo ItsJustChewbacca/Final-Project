@@ -86,6 +86,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
   position: absolute;
   width: 100%;
 }
+.alert-opacity {
+  filter: opacity(85%);
+}
 
 
 
