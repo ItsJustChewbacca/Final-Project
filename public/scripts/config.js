@@ -63,14 +63,19 @@ $(document).ready(function() {
 
     $('.rebind-result').empty();
       diff.forEach(([a, b]) => {
-        $('.rebind-result').append(`<li class="list-group-item"> ${a} ~ map to ~ ${b}</li>`);
+        $('.rebind-result').append(`<li class="list-group-item alert-opacity"> ${a} ~ map to ~ ${b}</li>`);
       });
     var $potential = $('.potential-mappings').empty();
     leftOutB.forEach((a) => {
       leftOutA.forEach((b) => {
-        $potential.append(`<li class="list-group-item"> ${a} ~ map to ~ ${b}</li>`);
+        $potential.append(`<li class="list-group-item alert-opacity"> ${a} ~ map to ~ ${b}</li>`);
       });
     });
+  });
+
+  $(".games-list").hide();
+  $(".close").on('click', function () {
+  $(".games-list").slideDown();
   });
 
 
