@@ -1,14 +1,21 @@
-# Node Skeleton
+Map-X
+--------
+Map-X is a web application that gives users the unique opportunity to use to the same controls throughout multiple Xbox One FPS shooters. E.g. User wants to use the control layout "Bumper-jumper" from Halo 5 in another FPS Xbox game. This app will give the user the tools required to execute this request. Map-X uses the Xbox One accessories application that comes equipped with the Xbox One Elite controller. This Web application also comes stacked with a registration page/login page that gives the registered user the ability to go onto the web apps forums page to engage with the community. The web app also has a home page filled with tips and tricks for xbox One Elite controller owners. The main function of the web app is found on the configuration page, which is where the magic happens. Registered Users are given a profile page where they can change their passwords, emails, usernames etc. 
 
-## Project Setup
+# Final Product
+!['Screenshot of Homepage']()
+!['Screenshot of Registration page']()
+!['Screenshot of Login page']()
+!['Screenshot of profile page']()
+!['Screenshot of Configuration page']()
+!['Screenshot of Selecting game and conroller layout on configuration page']()
+!['Screenshot of Configuration results']()
+!['Screenshot of Forums page']()
+!['Screenshot of Creating topic on forums page']()
+!['Screenshot of Topic Created']()
+!['Screenshot of Topic page/ creating comment on topic']()
+!['Screenshot of Comment created plus liking comment']()
 
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
 
 ## Getting Started
 
@@ -24,6 +31,31 @@
 8. Visit `http://localhost:8080/`
 
 ## Dependencies
+```
+ - Bcryptjs
+ - Bluebird
+ - Body-parser:
+ - Connect-flash
+ - Cookie-parser
+ - Database-error
+ - Dotenv
+ - Ejs
+ - Express
+ - Express-session
+ - Express-validator
+ - Knex
+ - Knex-logger
+ - Method-override
+ - Morgan
+ - Node-sass-middleware
+ - Passport
+ - Passport-local
+ - Pg
+```
 
-- Node 5.10.x or above
-- NPM 3.8.x or above
+```
+devDependencies
+ - Knex-logger
+ - Nodemon
+ - Sqlite3
+ ```
